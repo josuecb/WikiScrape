@@ -128,7 +128,7 @@ def addLoc(titles, values, school, contactlist):
     while i < contactlist.__len__():
         if contactlist[i] == school:
             i += 1#go to address
-            titles.append('address')
+            titles.append('address 1')
             values.append(contactlist[i])
             i += 1# go to city
             titles.append('city')
