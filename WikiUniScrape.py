@@ -1,9 +1,18 @@
 from ScrapeWiki import scrapeTable, compileDiv1List
 import json
 from collegeContact import getContactList
+import os
 #open the list of NCAA members and make it into a string array/list
 
 div1List = compileDiv1List()#used to pull location information from wiki table
+
+fileold = open('NCAA_json.json', 'r')
+backup = open('NCAA_jsonBackup.json', 'w')
+backup.write(fileold.read())
+fileold.close()
+backup.close()
+os.remove('NCAA_json.json')
+
 
 
 file = open('NCAA_list.txt', 'r')
