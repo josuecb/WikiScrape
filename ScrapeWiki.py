@@ -9,26 +9,34 @@ from collegeContact import addLoc
 import time
 
 
-
-
+############################################################
+#########################################################
+###   GET COLORS FORM WIKI TABLE
+###
+## pull the school colors from the schools wikipedia page
+############################################################
 def scrapeColors(table):
-    table = str(table)
 
-
+    table = str(table)#the table that contains the color information (as a string list)
     colors = []
     lines = 0
+    ######################
+    ##       looks for commands related to setting background color (if we have thr proper table this should return only what is needed)
     while lines < (table.__len__() - 12):
         color = ''
 
-######################################################################################
-        ### adding a 'border-right:' search could possibly get the diagonal white values
+        #border-right is used for schools with 2 colors in a single colorbox
         if table[lines : (lines + 12)] == '"background:' or table[lines : lines + 12] == 'background-c' or table[lines : lines + 12] == 'border-right':
             blackorwhite = 0#if a black or white value is witten in text (common)
             linestart = lines
-            while table[lines] != '#' and lines < table.__len__() - 5:
+            while table[lines] != '#' and lines < table.__len__() - 5:#pulls all characters following the '#'
+
+               # checks for any 'english' color commands within the html, colors can be added to the dictionary within the functions corresponding script
+                #  bw = 1 or 0, col = the color code, ind = the position of the last character of the color within the html string
                 bw, col, ind = checkforcolor(table, lines)
-                if bw == 1:
-                    blackorwhite = 1
+
+                if bw == 1:# bw indicates the color was written in english within the html
+                    blackorwhite = 1#this should probably just use the value bw now
                     colors.append(col)
                     lines += ind
                     break
@@ -49,7 +57,7 @@ def scrapeColors(table):
                     colors.append(color)
         lines += 1
     del lines, table
-    return colors#returns answer as an array, if no colors are found returns an empty array
+    return colors# returns colors as an array, if no colors are found returns an empty array, its length will be checked to determine the existance of color data
 
 
 
@@ -79,15 +87,6 @@ def compileDiv1List():
         loop += 1
 
     return div1string
-
-
-
-
-
-
-
-
-
 
 
 
