@@ -352,8 +352,9 @@ def scrapeTable(school, div1List, contactlist):
     url = 'http://en.wikipedia.org/wiki/' + schoolname# should avoid redirects
     url = url.replace(' ', '_')
     url = url.replace('&', '%26')
-    titles.append('wiki')
-    values.append(unidecode(url))
+    if titles.__contains__('url') == True:
+        titles.append('wiki')
+        values.append(unidecode(url))
     titles.append('id')
     idkey = str(time.time())
     values.append(idkey)

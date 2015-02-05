@@ -42,8 +42,7 @@ def wikijson(wikititles, wikivalues, idkey):
     global totalElements
     global depth
     totalElements = 0
-    global website
-    website = 0
+
     depth = 0
 
     def removeunused(dict):
@@ -114,8 +113,7 @@ def wikijson(wikititles, wikivalues, idkey):
                 for title in titles:
                     if title == t:
                         totalElements += 1
-                        if title == 'url':
-                            website = 1
+
 
                         dict[t] = values[i]
                     i += 1
@@ -164,7 +162,7 @@ def wikijson(wikititles, wikivalues, idkey):
 
 
     print totalElements
-    if totalElements > 4 and website == 1:
+    if totalElements > 3:
         print Main
         return Main
 
