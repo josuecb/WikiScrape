@@ -22,7 +22,7 @@ def wikijson(wikititles, wikivalues, idkey):
     Alumni = {'contact': ContactAlum, 'location': LocationAlum}
     Athletics = {'conference': ''}
 
-    School = {'wiki': '', 'mascot': '', 'established': '', 'names': Names, 'location': Location,
+    School = {'wiki': '', 'mascot': '', 'established': '', 'names': Names, 'location': Location, 'endowment' : '',
               'contact': Contact, 'motto': Motto}
 
     Schoolmain = {'name': '', 'id:': idkey, 'athletics': Athletics, 'enrollment': Enrollment,

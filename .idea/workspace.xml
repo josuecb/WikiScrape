@@ -14,7 +14,7 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/WikipediaUniScraper$WikiUniScrape.coverage" NAME="WikiUniScrape Coverage Results" MODIFIED="1423159608578" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/WikipediaUniScraper$WikiUniScrape.coverage" NAME="WikiUniScrape Coverage Results" MODIFIED="1423160543450" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -95,8 +95,8 @@
       <file leaf-file-name="create_Json.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/create_Json.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6005222" vertical-offset="2694" max-vertical-offset="3077">
-              <caret line="172" column="0" selection-start-line="172" selection-start-column="0" selection-end-line="172" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.56396866" vertical-offset="192" max-vertical-offset="3077">
+              <caret line="24" column="114" selection-start-line="24" selection-start-column="114" selection-end-line="24" selection-end-column="114" />
               <folding />
             </state>
           </provider>
@@ -991,8 +991,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/create_Json.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6005222" vertical-offset="2694" max-vertical-offset="3077">
-          <caret line="172" column="0" selection-start-line="172" selection-start-column="0" selection-end-line="172" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.56396866" vertical-offset="192" max-vertical-offset="3077">
+          <caret line="24" column="114" selection-start-line="24" selection-start-column="114" selection-end-line="24" selection-end-column="114" />
           <folding />
         </state>
       </provider>
