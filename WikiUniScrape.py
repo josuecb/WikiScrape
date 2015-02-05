@@ -50,6 +50,7 @@ contactlist = getContactList()
 ########################
 counter = 0
 first = 0
+
 file.write('{')
 for school in schoollist:
     result = scrapeTable(school, div1List, contactlist)
@@ -63,8 +64,11 @@ for school in schoollist:
         counter += 1
         print counter
 
+
         file.write(jsonout)
         first = 1
+
 file.write('}')
 file.close()
 ###############################
+

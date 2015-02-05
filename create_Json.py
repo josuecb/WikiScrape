@@ -42,6 +42,8 @@ def wikijson(wikititles, wikivalues, idkey):
     global totalElements
     global depth
     totalElements = 0
+    global website
+    website = 0
     depth = 0
 
     def removeunused(dict):
@@ -94,8 +96,16 @@ def wikijson(wikititles, wikivalues, idkey):
 
 
 
+
+
+
+
+
+
+
     def addfromwiki2(titles, values, dict):
         global totalElements
+        global website
         for t,v in dict.items():
             if type(v) == type_dict and t.find('alumni') == -1:
                 addfromwiki2(titles, values, dict[t])
@@ -104,6 +114,8 @@ def wikijson(wikititles, wikivalues, idkey):
                 for title in titles:
                     if title == t:
                         totalElements += 1
+                        if title == 'url':
+                            website = 1
 
                         dict[t] = values[i]
                     i += 1
@@ -152,7 +164,7 @@ def wikijson(wikititles, wikivalues, idkey):
 
 
     print totalElements
-    if totalElements > 4:
+    if totalElements > 4 and website == 1:
         print Main
         return Main
 

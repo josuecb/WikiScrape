@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 from unidecode import unidecode
 from create_Json import wikijson
-from htmlcolors import checkforcolor
+from htmlcolors import checkforcolor, checkforcolor2, checkforcolor3
 from getimages import download_img
 from remove_p import remove_p
 from collegeContact import addLoc
@@ -28,33 +28,58 @@ def scrapeColors(table):
         #border-right is used for schools with 2 colors in a single colorbox
         if table[lines : (lines + 12)] == '"background:' or table[lines : lines + 12] == 'background-c' or table[lines : lines + 12] == 'border-right':
             blackorwhite = 0#if a black or white value is witten in text (common)
-            linestart = lines
-            while table[lines] != '#' and lines < table.__len__() - 5:#pulls all characters following the '#'
 
-               # checks for any 'english' color commands within the html, colors can be added to the dictionary within the functions corresponding script
-                #  bw = 1 or 0, col = the color code, ind = the position of the last character of the color within the html string
-                bw, col, ind = checkforcolor(table, lines)
-
-                if bw == 1:# bw indicates the color was written in english within the html
-                    blackorwhite = 1#this should probably just use the value bw now
-                    colors.append(col)
-                    lines += ind
-                    break
+            textcolor = 0
+            # get potential  color name string string
+            while table[lines] != ':':
                 lines += 1
-            color += table[lines]
             lines += 1
+            temp = lines
 
-            if blackorwhite == 0:
-                while table[lines].isalnum():
-                    color += table[lines]
+            col = ''#potential color
+            while table[temp] != ';':
+                col += table[temp]
+                temp += 1
+
+
+            textcolor, col = checkforcolor3(col)
+
+            if textcolor == 1:
+                colors.append(col)
+            else:
+
+
+
+
+
+                linestart = lines
+                while table[lines] != '#' and lines < table.__len__() - 5:#pulls all characters following the '#'
+
+                   # checks for any 'english' color commands within the html, colors can be added to the dictionary within the functions corresponding script
+                    #  bw = 1 or 0, col = the color code, ind = the position of the last character of the color within the html string
+                    #bw, col, ind = checkforcolor2(table, lines)
+
+                   # if bw == 1:# bw indicates the color was written in english within the html
+                      #  blackorwhite = 1#this should probably just use the value bw now
+                       # colors.append(col)
+                      #  lines += ind
+                       # break
                     lines += 1
+                color += table[lines]
+                lines += 1
+
+                if blackorwhite == 0:
+                    while table[lines].isalnum():
+                        color += table[lines]
+                        lines += 1
 
 
-                if colors.__len__() != 0:
-                    if colors[- 1] != color:
+                    if colors.__len__() != 0:
+                        if colors[- 1] != color:
+                            colors.append(color)
+                    else:
                         colors.append(color)
-                else:
-                    colors.append(color)
+            lines += 1
         lines += 1
     del lines, table
     return colors# returns colors as an array, if no colors are found returns an empty array, its length will be checked to determine the existance of color data
