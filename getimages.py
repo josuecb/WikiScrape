@@ -53,4 +53,6 @@ def download_img(tables, titles):
 
 
 
+def addimagesfromlist(school):
+    imagefile125 = open('imageIN125.txt', 'r')
 

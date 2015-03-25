@@ -2,7 +2,7 @@ from ScrapeWiki import scrapeTable, compileDiv1List
 import json
 from collegeContact import getContactList
 import os
-
+from termcolor import *
 ##################################################################################
 #  this is the list of schools whose state/city can be scraped from wikipedia
 
@@ -62,7 +62,7 @@ for school in schoollist:
         jsonout = str((jsonout[1:jsonout.__len__() - 1]))#probably already makes it a string but whatever
         print jsonout
         counter += 1
-        print counter
+        print colored('Scraped Universities: ' + str(counter), 'green')
 
 
         file.write(jsonout)

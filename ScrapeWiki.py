@@ -2,13 +2,14 @@ import requests
 from bs4 import BeautifulSoup
 from unidecode import unidecode
 from create_Json import wikijson
-from htmlcolors import checkforcolor, checkforcolor2, checkforcolor3
+from htmlcolors import *
 from getimages import download_img
 from remove_p import remove_p
 from collegeContact import addLoc
 import time
-
-
+import team_link
+from auxiliar_methods import *
+from termcolor import *
 ############################################################
 #########################################################
 ###   GET COLORS FORM WIKI TABLE
@@ -41,17 +42,11 @@ def scrapeColors(table):
                 col += table[temp]
                 temp += 1
 
-
             textcolor, col = checkforcolor3(col)
 
             if textcolor == 1:
                 colors.append(col)
             else:
-
-
-
-
-
                 linestart = lines
                 while table[lines] != '#' and lines < table.__len__() - 5:#pulls all characters following the '#'
 
@@ -116,6 +111,11 @@ def compileDiv1List():
 
 
 
+def append_value(value, key, titles_list, values_list):
+    if value != None:
+        titles_list.append(key)
+        values_list.append(value)
+
 
 def scrapeD1Locations(div1List, schoolName):
     titles = []
@@ -144,20 +144,10 @@ def scrapeD1Locations(div1List, schoolName):
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-def scrapeTable(school, div1List, contactlist):
+def scrapeTable(school, div1List, university_contactlist):
+    titles = []# the name of each element being pulled
+    values = []# the value of each element beinh pulled
+        #the two arrays correspond to each other (titles[0] is the name of the data at values[0])
     url = 'http://en.wikipedia.org/wiki/' + school
     #get html
     while 1:
@@ -178,26 +168,34 @@ def scrapeTable(school, div1List, contactlist):
     except:
 
         return
-
+    team_link_logo = ''
     for tables in soup.find_all('table'):
         if tables.text.find('Website') != -1:
+            # The 'team_link_logo' variable will contain our logo link
+            # Just plug it into the main code because i don't know where it is: Josue
+            team_link_logo = team_link.find_team_img_link(tables)
+            if team_link_logo is None:
+                team_link_logo = ''         # Here it seems this variable is not use but you are going to
+                                            # to use it later
+            # Here the code ends#################################
+            #print(team_link_logo)
+
             stringtable = tables.text
             tab = tables
+
             break
-
-
-
-
-
-
 
     ###########################################################################
     schoolname = soup.span.text#This is the name of the school at the top of the wiki page, this will be more consistent
-    print schoolname
+    print colored(school, 'red')
     if schoolname == 'Main Page':
         return
-
-    colors = []#array that will store the school colors
+    # Finds twitter and facebook's school
+    twitter, facebook = get_facebook_and_twitter(school)
+    img_125x = get_image_000x(school, 'imageIN125.txt')
+    img_250x = get_image_000x(school, 'imageIN250.txt')
+    #print('%%%%%%%%%%%%%%%%%%%%%%%%%%%', twitter, facebook)
+    #colors = []#array that will store the school colors
     colors = scrapeColors(tab)#gets the school colors (from colorgrab2), the table is passed to this function
     print colors#check progress (delete this later)
         #############################################################################
@@ -207,9 +205,7 @@ def scrapeTable(school, div1List, contactlist):
     #############################################################################
     stringtable = stringtable.split('\n')#seperate each table entry
 
-    titles = []# the name of each element being pulled
-    values = []# the value of each element beinh pulled
-        #the two arrays correspond to each other (titles[0] is the name of the data at values[0])
+
     titles.append('name')
     values.append(unidecode(schoolname))#add the name as it appears at the top of the wiki page
 
@@ -275,7 +271,8 @@ def scrapeTable(school, div1List, contactlist):
             elif stringtable[current] == 'Undergraduates':
                 stringtable[current] = 'undergraduate'
             elif stringtable[current] == 'Website':
-                stringtable[current] = 'url'
+                stringtable[current] = 'uni url'            # University url from wiki it will be changed after \
+                # key_changer function
             elif stringtable[current] == 'Athletics':
                 stringtable[current] = 'conference'
             else:
@@ -349,46 +346,37 @@ def scrapeTable(school, div1List, contactlist):
 
 
                 #######################
-    url = 'http://en.wikipedia.org/wiki/' + schoolname# should avoid redirects
+    url = 'http://en.wikipedia.org/wiki/' + schoolname          # should avoid redirects
     url = url.replace(' ', '_')
     url = url.replace('&', '%26')
-    if titles.__contains__('url') == True:
+    if url != None:
         titles.append('wiki')
         values.append(unidecode(url))
     titles.append('id')
     idkey = str(time.time())
     values.append(idkey)
     image = download_img(tab, schoolname)
-    print image
-    if image != None:
-        titles.append('raw_logo')
-        values.append(image)
+    #print image
+    append_value(img_125x, 'tm png125', titles, values)
+    append_value(img_250x, 'tm png250', titles, values)
+    #print(img_125x, img_250x)
+    append_value(image, 'raw_logo', titles, values)
+    append_value(team_link_logo, 'tm small logo', titles, values)
+    #print(team_link_logo)
 
-
-
+    # small logo
 
     ########################
 ###############################################################################
 
     if schoolname == 'Main Page':
         return
+    append_value(facebook, 'uni facebook', titles, values)
+
+    append_value(twitter, 'uni twitter', titles, values)
 
 
-
-    titles, values = addLoc(titles, values, schoolname, contactlist)
-
+    titles, values = addLoc(titles, values, schoolname, university_contactlist)
 
     jsonout = wikijson(titles, values, idkey)
     return jsonout
-
-
-
-
-
-
-
-
-
-
-
-

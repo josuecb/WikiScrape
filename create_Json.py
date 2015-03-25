@@ -1,39 +1,31 @@
+from auxiliar_methods import *
+from termcolor import *
 
-def wikijson(wikititles, wikivalues, idkey):
+def wikijson(wiki_titles, wiki_values, id_key):
 
-    Location = {'city': '', 'region': '', 'address 1': '', 'address 2': '', 'postalcode': '',
-                'country': '', 'lat': '', 'long': ''}
-    LocationAlum = Location
-
-    Contact = {'phone': '', 'url': '', 'facebook': '', 'twitter': '', 'linkedin': ''}
-    ContactAlum = Contact
-
-    ImagesAth = {'small logo': '', 'svg logo': '', 'png125': '', 'png250': ''}
+    ImagesAth = {'tm small logo': '', 'tm svg logo': '', 'tm png125': '', 'tm png250': ''}
     ImagesUni = {'raw_logo': '', 'small logo': '', 'svg logo': '', 'png125': '', 'png250': ''}
     Images = {'favicon': '', 'athletics': ImagesAth, 'university': ImagesUni, 'campus': ''}
-    Motto = {'english': '', 'latin': ''}
 
+    Location = {'uni city': '', 'uni region': '', 'uni address 1': '', 'uni address 2': '', 'uni postalcode': '',
+                'uni country': '', 'uni lat': '', 'uni long': ''}
     Names = {'nickname singular': '', 'nickname plural': ''}
-
-    Colors = {'primary': '', 'secondary': '', 'tertiary': ''}
-
-    Enrollment = {'undergraduate': '', 'postgraduate': ''}
-
-    Alumni = {'contact': ContactAlum, 'location': LocationAlum}
-    Athletics = {'conference': ''}
-
-    School = {'wiki': '', 'mascot': '', 'established': '', 'names': Names, 'location': Location, 'endowment' : '',
+    Contact  = {'uni phone': '', 'uni url': '', 'uni facebook': '', 'uni twitter': '', 'uni linkedin': ''}
+    Motto = {'english': '', 'latin': ''}
+    School = {'wiki': '', 'mascot': '', 'established': '', 'names': Names, 'location': Location, 'endowment': '',
               'contact': Contact, 'motto': Motto}
 
-    Schoolmain = {'name': '', 'id:': idkey, 'athletics': Athletics, 'enrollment': Enrollment,
+    Enrollment = {'undergraduate': '', 'postgraduate': ''}
+    Athletics = {'conference': ''}
+    ContactAlum = {'phone': '', 'url': '', 'facebook': '', 'twitter': '', 'linkedin': ''}
+    LocationAlum = {'city': '', 'region': '', 'address 1': '', 'address 2': '', 'postalcode': '',
+                    'country': '', 'lat': '', 'long': ''}
+    Alumni = {'contact': ContactAlum, 'location': LocationAlum}
+    Colors = {'primary': '', 'secondary': '', 'tertiary': ''}
+    Schoolmain = {'name': '', 'id:': id_key, 'athletics': Athletics, 'enrollment': Enrollment,
                   'alumni': Alumni, 'school': School, 'colors': Colors, 'images': Images}
 
-    Main = {idkey : Schoolmain}
-
-
-
-
-
+    Main = {id_key: Schoolmain}
 
 
     type_dict = type({})
@@ -72,19 +64,19 @@ def wikijson(wikititles, wikivalues, idkey):
                     dict[name] = removeempty(value)
 
 
-
-    def addfromwiki(wikititles, wikivalues, dict):#ignores alumni related entries:
+    """
+    def addfromwiki(wiki_titles, wiki_values, dict):#ignores alumni related entries:
         i = 0
 
-        for title in wikititles:
+        for title in wiki_titles:
             for key, values in dict.items():
                 if key.find('alumni') == -1:
                     if type(values) == type_dict:
-                        dict[key] = addfromwiki(wikititles, wikivalues, dict[key])
+                        dict[key] = addfromwiki(wiki_titles, wiki_values, dict[key])
                         return key
 
                     elif key == title:
-                        dict[key] = wikivalues[i]
+                        dict[key] = wiki_values[i]
 
 
                 else:
@@ -92,29 +84,20 @@ def wikijson(wikititles, wikivalues, idkey):
 
         print dict
         i += 1
-
-
-
-
-
-
-
-
+    """
 
 
     def addfromwiki2(titles, values, dict):
         global totalElements
         global website
-        for t,v in dict.items():
-            if type(v) == type_dict and t.find('alumni') == -1:
+        for t, v in dict.items():
+            if type(v) == type_dict:
                 addfromwiki2(titles, values, dict[t])
             else:
                 i = 0
                 for title in titles:
                     if title == t:
                         totalElements += 1
-
-
                         dict[t] = values[i]
                     i += 1
 
@@ -122,22 +105,7 @@ def wikijson(wikititles, wikivalues, idkey):
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    addfromwiki2(wikititles, wikivalues, Main)
+    addfromwiki2(wiki_titles, wiki_values, Main)
 
     removeunused(Main)#im going to fix this and make it a part of an actual loop
     removeunused(Main)
@@ -146,22 +114,16 @@ def wikijson(wikititles, wikivalues, idkey):
     removeunused(Main)
     removeunused(Main)
 
+    #old_key_list = ['tm small logo', 'tm svg logo', 'tm png125', 'tm png250']
+    key_changer(ImagesAth, 'tm ')
+    #print(ImagesAth)
+    key_changer(Contact, 'uni ')
+    #print(Contact)
+    key_changer(Location, 'uni ')
+    #print(Location)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-    print totalElements
+    print colored('Total elements: ' + str(totalElements), 'cyan')
     if totalElements > 3:
         print Main
         return Main
