@@ -32,9 +32,9 @@ I will make another Version soon so you can have more capability to manage each 
 
 # Run WikiUniScrape.py
 
-# Output
+# Output Sample
 A Json File called 'NCAA_json.json':
-output: 
+Sample: 
 ```js
 {
     "1453503777.33": {
@@ -71,4 +71,8 @@ output:
             "conference": "NCAA Division I - Southland"
         }
     }
+    
+    ...
+    ...
+    ...
 ```
