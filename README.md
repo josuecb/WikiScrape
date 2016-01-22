@@ -35,7 +35,7 @@ I will make another Version soon so you can have more capability to manage each 
 # Output
 A Json File called 'NCAA_json.json':
 output: 
-`
+```js
 {
     "1453503777.33": {
         "school": {
@@ -71,4 +71,4 @@ output:
             "conference": "NCAA Division I - Southland"
         }
     }
-`
+```
