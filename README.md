@@ -33,7 +33,42 @@ I will make another Version soon so you can have more capability to manage each 
 # Run WikiUniScrape.py
 
 # Output
-A Json File called 'NCAA_json.json' 
+A Json File called 'NCAA_json.json':
+output: 
 `
-{"1453503777.33": {"school": {"wiki": "http://en.wikipedia.org/wiki/[", "established": "1906", "contact": {"url": "www.acu.edu", "twitter": "http://www.twitter.com/acusports", "facebook": "http://www.facebook.com/ACUsports"}, "names": {"nickname plural": "Wildcats"}, "endowment": "$374 million", "mascot": "Willie the Wildcat"}, "id:": "1453503777.33", "name": "[", "images": {"athletics": {"png125": "http://i.imgur.com/7m1brpq.png", "small logo": "http://upload.wikimedia.org/wikipedia/en/thumb/9/95/Abilene_Christian_Wildcats_Primary_Logo.png/200px-Abilene_Christian_Wildcats_Primary_Logo.png"}, "university": {"raw_logo": "http://upload.wikimedia.org/wikipedia/en/thumb/3/36/AcuSeal.png/200px-AcuSeal.png"}}, "colors": {"primary": "#461D7C", "secondary": "#FFFFFF"}, "athletics": {"conference": "NCAA Division I - Southland"}}
+{
+    "1453503777.33": {
+        "school": {
+            "wiki": "http://en.wikipedia.org/wiki/[",
+            "established": "1906",
+            "contact": {
+                "url": "www.acu.edu",
+                "twitter": "http://www.twitter.com/acusports",
+                "facebook": "http://www.facebook.com/ACUsports"
+            },
+            "names": {
+                "nickname plural": "Wildcats"
+            },
+            "endowment": "$374 million",
+            "mascot": "Willie the Wildcat"
+        },
+        "id:": "1453503777.33",
+        "name": "[",
+        "images": {
+            "athletics": {
+                "png125": "http://i.imgur.com/7m1brpq.png",
+                "small logo": "http://upload.wikimedia.org/wikipedia/en/thumb/9/95/Abilene_Christian_Wildcats_Primary_Logo.png/200px-Abilene_Christian_Wildcats_Primary_Logo.png"
+            },
+            "university": {
+                "raw_logo": "http://upload.wikimedia.org/wikipedia/en/thumb/3/36/AcuSeal.png/200px-AcuSeal.png"
+            }
+        },
+        "colors": {
+            "primary": "#461D7C",
+            "secondary": "#FFFFFF"
+        },
+        "athletics": {
+            "conference": "NCAA Division I - Southland"
+        }
+    }
 `
