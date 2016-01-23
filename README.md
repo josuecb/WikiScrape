@@ -47,7 +47,7 @@ then you are ready to run WikiUniScrape.py and you will get an output in your co
 It will also output the JSON file and if there is any error it will output in a different file. There is a Backup file in case there is some error or you are requesting a new updated JSON data.
 
 # JSON Content Sample
-Json File created: 'NCAA_json.json'
+Json File created: `NCAA_json.json`
 
 Sample: 
 ```js
