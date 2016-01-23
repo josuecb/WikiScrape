@@ -32,6 +32,20 @@ I will make another Version soon so you can have more capability to manage each 
 
 # Run WikiUniScrape.py
 
+To make this script run you need to install the following modules:
+termcolor.py
+unidecode.py
+BeautifulSoup4.py
+bs4.py
+requests.py
+webcolors.py
+
+then you are ready to run WikiUniScrape.py and you will get an output in your console so you can visualize whats happening.
+
+[![Screebshot](http://oi65.tinypic.com/2mys30n.jpg)](http://oi65.tinypic.com/2mys30n.jpg)
+
+It will also output the JSON file and if there is any error it will output in a different file. There is a Backup file in case there is some error or you are requesting a new updated JSON data.
+
 # Output Sample
 A Json File called 'NCAA_json.json':
 Sample: 
