@@ -34,13 +34,14 @@ I will make another Version soon so you can have more capability to manage each 
 # Run WikiUniScrape.py
 
 To make this script run you need to install the following modules:
+```
 termcolor.py
 unidecode.py
 BeautifulSoup4.py
 bs4.py
 requests.py
 webcolors.py
-
+```
 then you are ready to run WikiUniScrape.py and you will get an output in your console so you can visualize whats happening.
 
 [![Screebshot](http://oi65.tinypic.com/2mys30n.jpg)](http://oi65.tinypic.com/2mys30n.jpg)
