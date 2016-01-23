@@ -5,9 +5,9 @@ This scripts, has many tools to scrape different kinds of universities in the US
 This scripts, uses a predetermined text file where it says a list of all University in the US.
 
 it'll scrape the information table that appears in the right side of the wikipedia page.
-```
-info scraped:
 
+info scraped:
+```
 year created
 team name
 former names
