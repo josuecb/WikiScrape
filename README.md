@@ -1,5 +1,5 @@
 # WikiScrape
-This Scripts were supposed to be unique all together to be automatized in any server and grap a huge JSON file so you can manage this data with just running it in your server.
+This Scripts were supposed to be unique all together to be automatized in any server and grap a huge JSON file with University data so you can manage this data with just running it in your server.
 
 This scripts, has many tools to scrape different kinds of universities in the US
 This scripts, uses a predetermined text file where it says a list of all University in the US.
