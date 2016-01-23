@@ -54,41 +54,47 @@ Json File created: `NCAA_json.json`
 Sample: 
 ```js
 {
-    "1453503777.33": {
+    "1423637350.5": {
         "school": {
-            "wiki": "http://en.wikipedia.org/wiki/[",
+            "wiki": "http://en.wikipedia.org/wiki/Abilene_Christian_University",
             "established": "1906",
             "contact": {
                 "url": "www.acu.edu",
                 "twitter": "http://www.twitter.com/acusports",
+                "phone": "(325) 674-2000",
                 "facebook": "http://www.facebook.com/ACUsports"
             },
             "names": {
                 "nickname plural": "Wildcats"
             },
-            "endowment": "$374 million",
+            "endowment": "$300 million",
+            "location": {
+                "postalcode": "79601",
+                "address 1": "1600 Campus Court",
+                "region": "TX",
+                "city": "Abilene"
+            },
             "mascot": "Willie the Wildcat"
         },
-        "id:": "1453503777.33",
-        "name": "[",
+        "id:": "1423637350.5",
+        "name": "Abilene Christian University",
         "images": {
             "athletics": {
                 "png125": "http://i.imgur.com/7m1brpq.png",
-                "small logo": "http://upload.wikimedia.org/wikipedia/en/thumb/9/95/Abilene_Christian_Wildcats_Primary_Logo.png/200px-Abilene_Christian_Wildcats_Primary_Logo.png"
+                "small logo": "http://upload.wikimedia.org/wikipedia/en/thumb/9/95/Abilene_Christian_Wildcats_Primary_Logo.png/220px-Abilene_Christian_Wildcats_Primary_Logo.png"
             },
             "university": {
-                "raw_logo": "http://upload.wikimedia.org/wikipedia/en/thumb/3/36/AcuSeal.png/200px-AcuSeal.png"
+                "raw_logo": "http://upload.wikimedia.org/wikipedia/en/3/36/AcuSeal.png"
             }
         },
         "colors": {
-            "primary": "#461D7C",
-            "secondary": "#FFFFFF"
+            "primary": "#800080",
+            "secondary": "#ffffff"
         },
         "athletics": {
             "conference": "NCAA Division I - Southland"
         }
-    }
-    
+    },
     ...
     ...
     ...
